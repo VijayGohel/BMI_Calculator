@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-const TextStyle currentTextStyle = TextStyle(
-  color: Color(0xFFe0e0e0),
-  fontWeight: FontWeight.bold,
-);
+import 'constants.dart';
 
 class IconsContent extends StatelessWidget {
   IconsContent({this.iconData, this.text});
@@ -24,7 +20,7 @@ class IconsContent extends StatelessWidget {
           ),
           Text(
             text,
-            style: currentTextStyle,
+            style: kcurrentTextStyle,
           )
         ],
       ),

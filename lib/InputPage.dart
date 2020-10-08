@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons_content.dart';
+import 'constants.dart';
 
-const color = Color(0xFF546e7a);
-const inactiveColor = Color(0xFF37474f);
 //const fontColor = Color(0xFFe0e0e0);
 
 enum Gender {
@@ -37,6 +38,7 @@ class _InputPageState extends State<InputPage> {
     }
   }*/
 
+  int heigth = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +57,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.male;
                       });
                     },
-                    color:
-                        selectedGender == Gender.male ? color : inactiveColor,
+                    color: selectedGender == Gender.male
+                        ? kactiveColor
+                        : kinactiveColor,
                     cardChild: IconsContent(
                       iconData: FontAwesomeIcons.mars,
                       text: 'MALE',
@@ -70,8 +73,9 @@ class _InputPageState extends State<InputPage> {
                         selectedGender = Gender.female;
                       });
                     },
-                    color:
-                        selectedGender == Gender.female ? color : inactiveColor,
+                    color: selectedGender == Gender.female
+                        ? kactiveColor
+                        : kinactiveColor,
                     cardChild: IconsContent(
                       iconData: FontAwesomeIcons.venus,
                       text: 'FEMALE',
@@ -82,16 +86,54 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: ReusableCard(color: color),
+            child: ReusableCard(
+              color: kactiveColor,
+              cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'HEIGHT',
+                    style: kcurrentTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        heigth.toString(),
+                        style: knumberTextStyle,
+                      ),
+                      Text(
+                        'cm',
+                        style: kcurrentTextStyle,
+                      )
+                    ],
+                  ),
+                  Slider(
+                    value: heigth.toDouble(),
+                    max: 220,
+                    min: 120,
+                    onChanged: (double newValue) {
+                      setState(() {
+                        heigth = newValue.round();
+                      });
+                    },
+                    activeColor: Color(0xFFff4081),
+                    inactiveColor: kinactiveColor,
+                  )
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(color: color),
+                  child: ReusableCard(color: kactiveColor),
                 ),
                 Expanded(
-                  child: ReusableCard(color: color),
+                  child: ReusableCard(color: kactiveColor),
                 ),
               ],
             ),
