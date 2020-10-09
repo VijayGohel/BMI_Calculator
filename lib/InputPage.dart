@@ -39,6 +39,8 @@ class _InputPageState extends State<InputPage> {
   }*/
 
   int heigth = 180;
+  int weight = 60;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,18 +112,30 @@ class _InputPageState extends State<InputPage> {
                       )
                     ],
                   ),
-                  Slider(
-                    value: heigth.toDouble(),
-                    max: 220,
-                    min: 120,
-                    onChanged: (double newValue) {
-                      setState(() {
-                        heigth = newValue.round();
-                      });
-                    },
-                    activeColor: Color(0xFFff4081),
-                    inactiveColor: kinactiveColor,
-                  )
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: kinactiveColor,
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 15,
+                      ),
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30,
+                      ),
+                      thumbColor: Color(0xFFff4081),
+                      overlayColor: Color(0x29ff4081),
+                    ),
+                    child: Slider(
+                      value: heigth.toDouble(),
+                      max: 220,
+                      min: 120,
+                      onChanged: (double newValue) {
+                        setState(() {
+                          heigth = newValue.round();
+                        });
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -130,21 +144,117 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(color: kactiveColor),
+                  child: ReusableCard(
+                    color: kactiveColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kcurrentTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: knumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(() {
+                                    weight--;
+                                  });
+                                }),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                }),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(color: kactiveColor),
+                  child: ReusableCard(
+                    color: kactiveColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kcurrentTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: knumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                }),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                }),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(top: 10),
-            height: 80,
+            height: 50,
             color: Color(0xFFff4081),
             width: double.infinity,
           )
         ],
+      ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  final IconData icon;
+  final Function onPressed;
+  RoundIconButton({@required this.icon, @required this.onPressed});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: RawMaterialButton(
+        onPressed: onPressed,
+        elevation: 6.0,
+        fillColor: Color(0xFFb0bec5),
+        shape: CircleBorder(),
+        constraints: BoxConstraints.tightFor(
+          width: 56,
+          height: 56,
+        ),
+        child: Icon(icon),
       ),
     );
   }
