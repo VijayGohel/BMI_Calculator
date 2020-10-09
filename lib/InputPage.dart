@@ -1,10 +1,10 @@
-import 'dart:math';
-
+import 'package:bmi_calculator/results_page.dart';
 import 'package:flutter/material.dart';
 import 'ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icons_content.dart';
 import 'constants.dart';
+import 'results_page.dart';
 
 //const fontColor = Color(0xFFe0e0e0);
 
@@ -226,11 +226,24 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            height: 50,
-            color: Color(0xFFff4081),
-            width: double.infinity,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ResultsPage();
+                  },
+                ),
+              );
+            },
+            child: Container(
+              child: Text('CALCULATE'),
+              margin: EdgeInsets.only(top: 10),
+              height: 50,
+              color: Color(0xFFff4081),
+              width: double.infinity,
+            ),
           )
         ],
       ),
