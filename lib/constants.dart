@@ -18,3 +18,23 @@ const kBottomButtonText = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 20.0,
 );
+
+const kResultTitleTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 50,
+);
+
+const kresultCardResult = TextStyle(
+  color: Color(0xFF43a047),
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+
+const kresultCardNumber = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
+
+const kresultCardInterpretation = TextStyle(
+  fontSize: 20,
+);
