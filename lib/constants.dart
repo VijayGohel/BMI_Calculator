@@ -13,3 +13,8 @@ const knumberTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 50.0,
 );
+
+const kBottomButtonText = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontSize: 20.0,
+);
