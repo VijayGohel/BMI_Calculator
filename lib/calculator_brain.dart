@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+
 class CalculatorBrain {
   double _bmi;
 
@@ -26,5 +28,12 @@ class CalculatorBrain {
       return 'You have a normal body weight. Good job!';
     else
       return 'You have a lower than normal body weight. You can eat a bit more.';
+  }
+
+  Color getColor() {
+    if (_bmi >= 25 || _bmi < 18.5)
+      return Color(0xFFe53935);
+    else
+      return Color(0xFF43a047);
   }
 }

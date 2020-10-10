@@ -5,11 +5,13 @@ import '../components/ReusableCard.dart';
 
 class ResultsPage extends StatelessWidget {
   final String bmi, interpretation, result;
+  final Color color;
 
-  const ResultsPage(
+  ResultsPage(
       {@required this.bmi,
       @required this.interpretation,
-      @required this.result});
+      @required this.result,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,9 @@ class ResultsPage extends StatelessWidget {
                 children: [
                   Text(
                     result,
-                    style: kresultCardResult,
+                    style: TextStyle(
+                      color: color,
+                    ),
                   ),
                   Text(
                     bmi,

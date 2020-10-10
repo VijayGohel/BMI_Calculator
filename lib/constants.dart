@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'calculator_brain.dart';
+import 'screens/InputPage.dart';
 
 const TextStyle kcurrentTextStyle = TextStyle(
   color: Color(0xFFe0e0e0),

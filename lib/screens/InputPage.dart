@@ -243,6 +243,7 @@ class _InputPageState extends State<InputPage> {
                       bmi: brain.calcBMI(),
                       result: brain.getResult(),
                       interpretation: brain.getInterpretation(),
+                      color: brain.getColor(),
                     );
                   },
                 ),
