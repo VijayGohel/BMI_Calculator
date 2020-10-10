@@ -1,12 +1,13 @@
-import 'package:bmi_calculator/results_page.dart';
+import 'package:bmi_calculator/calculator_brain.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
-import 'ReusableCard.dart';
+import '../components/ReusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icons_content.dart';
-import 'constants.dart';
+import '../components/icons_content.dart';
+import '../constants.dart';
 import 'results_page.dart';
-import 'roundIcon_button.dart';
-import 'bottom_button.dart';
+import '../components/roundIcon_button.dart';
+import '../components/bottom_button.dart';
 
 //const fontColor = Color(0xFFe0e0e0);
 
@@ -231,11 +232,18 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             text: 'CALCULATE',
             onTap: () {
+              CalculatorBrain brain =
+                  new CalculatorBrain(height: heigth, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ResultsPage();
+                    return ResultsPage(
+                      bmi: brain.calcBMI(),
+                      result: brain.getResult(),
+                      interpretation: brain.getInterpretation(),
+                    );
                   },
                 ),
               );
